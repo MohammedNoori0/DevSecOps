@@ -1,0 +1,19 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies..."
+      - pip install -r requirements.txt
+      - pip install bandit
+  build:
+    commands:
+      - echo "Running security scan..."
+      - bandit -r .
+  post_build:
+    commands:
+      - echo "Build completed."
+artifacts:
+  files:
+    - '**/*'
+
